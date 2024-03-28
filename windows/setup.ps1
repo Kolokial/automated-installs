@@ -9,3 +9,6 @@ if($null -eq$isChocoInstalled){
 Write-Host "Yes, it is. Let's continue..."
 
 choco install packages.config -y
+
+Write-Host "Okay, let's setup WSL with Debian."
+wsl --install -d Debian
