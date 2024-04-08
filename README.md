@@ -5,7 +5,7 @@ A boring script to help automate installation of software that I tend to have to
 - FileZilla FTP Client
 - VSCode
 - Discord
-- Chrome
+- Google Chrome
 - Ultimaker Cura
 - Steam
 - VLC
@@ -13,6 +13,9 @@ A boring script to help automate installation of software that I tend to have to
 - OBS Studio
 - Python
 - WinRAR
+- Putty
+- WSL Debian
+- Raspberry Pi Imager
 
 ## Windows Prerequisites
 Before you run the `windows\setup.ps1` script you'll need to copy and paste the following command into your powershell window.
