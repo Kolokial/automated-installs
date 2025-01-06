@@ -1,7 +1,9 @@
 # Intro
+
 A boring script to help automate installation of software that I tend to have to have/want to install after I format my computer.
 
 ## Software Installed
+
 - FileZilla FTP Client
 - VSCode
 - Discord
@@ -16,7 +18,12 @@ A boring script to help automate installation of software that I tend to have to
 - Putty
 - WSL Debian
 - Raspberry Pi Imager
+- NVM
+- Plexamp
+- Docker Desktop
+- .NET
 
 ## Windows Prerequisites
+
 Before you run the `windows\setup.ps1` script you'll need to copy and paste the following command into your powershell window.
 `Set-ExecutionPolicy Bypass -Scope Process`
