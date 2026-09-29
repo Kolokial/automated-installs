@@ -2,6 +2,8 @@
 
 A boring script to help automate installation of software that I tend to have to have/want to install after I format my computer.
 
+This repo is also now just where I backup some configs for other OSes.
+
 ## Software Installed
 
 - FileZilla FTP Client
