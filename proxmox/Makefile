@@ -2,10 +2,13 @@
 TOFU_DIR := tofu
 ANSIBLE_DIR := ansible
 
-.PHONY: help fmt init validate plan lint check
+.PHONY: help discover fmt init validate plan lint check
 
 help: ## Show targets
 	@grep -E '^[a-z-]+:.*##' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "%-10s %s\n", $$1, $$2}'
+
+discover: ## Read-only API dump into discovery/
+	bash scripts/gather-api.sh
 
 fmt: ## Format OpenTofu files
 	tofu -chdir=$(TOFU_DIR) fmt -recursive

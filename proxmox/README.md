@@ -35,10 +35,13 @@ $env:PROXMOX_VE_API_TOKEN = '...'     # PowerShell
 
 Run `make help`. All targets are read-only: there is deliberately no `apply` or `destroy`.
 
+`make discover` dumps the cluster state (nodes, guests and their configs, storage, backup jobs, access) to `discovery/api/` and writes `discovery/guests.tsv`, the list of VMs and containers to import. It makes GET requests only, using `PROXMOX_VE_ENDPOINT` and `PROXMOX_VE_API_TOKEN`. If the token has privilege separation on, give the token itself a read-only role such as `PVEAuditor` on `/` (propagate), or some endpoints will return 403. Those are logged to `discovery/api/_errors.log` and skipped.
+
 ## Layout
 
 - `tofu/`: OpenTofu config
 - `ansible/`: roles, inventory, playbooks
+- `scripts/`: gather and helper scripts
 - `discovery/`: raw dumps from the Proxmox host (gitignored)
 - `docs/`: inventory and recovery notes
 

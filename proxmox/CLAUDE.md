@@ -28,6 +28,7 @@ The repo started empty: scaffold everything.
 ## Layout
 - `tofu/`: OpenTofu config
 - `ansible/`: roles, inventory, playbooks
+- `scripts/`: gather and helper scripts
 - `discovery/`: raw dumps from `pvesh`, `qm config`, `pct config`, host config files (gitignored; scrub secrets before anything is committed)
 - `docs/`: inventory, RECOVERY.md (bare-metal rebuild order, and what lives outside git: vzdump backups, age key, state)
 
