@@ -1,0 +1,29 @@
+{
+  "features": {
+    "ghcr.io/devcontainer-community/devcontainer-features/sshd:1": {
+      "version": "1.0.2",
+      "resolved": "ghcr.io/devcontainer-community/devcontainer-features/sshd@sha256:d00e8a73b6b8810658b3c28fd36b4782dbaca0f76a787fb7872db5e56d3b181b",
+      "integrity": "sha256:d00e8a73b6b8810658b3c28fd36b4782dbaca0f76a787fb7872db5e56d3b181b"
+    },
+    "ghcr.io/devcontainers-extra/features/age:1": {
+      "version": "1.0.16",
+      "resolved": "ghcr.io/devcontainers-extra/features/age@sha256:78469fe5d5ded6a24d50bdb5dbd083c5cd44639969563f122a6a92d3a9326136",
+      "integrity": "sha256:78469fe5d5ded6a24d50bdb5dbd083c5cd44639969563f122a6a92d3a9326136"
+    },
+    "ghcr.io/devcontainers-extra/features/ansible:2": {
+      "version": "2.1.2",
+      "resolved": "ghcr.io/devcontainers-extra/features/ansible@sha256:0b0c1e75e3c0fc9036d2d73277ded8d7c7589cb5971fc51549c38eaa0d5893ca",
+      "integrity": "sha256:0b0c1e75e3c0fc9036d2d73277ded8d7c7589cb5971fc51549c38eaa0d5893ca"
+    },
+    "ghcr.io/devcontainers-extra/features/opentofu:1": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/devcontainers-extra/features/opentofu@sha256:893ba9242583e18cc0b91b0882f736029f0ba7617164b99ca1c6b34871d12e32",
+      "integrity": "sha256:893ba9242583e18cc0b91b0882f736029f0ba7617164b99ca1c6b34871d12e32"
+    },
+    "ghcr.io/devcontainers-extra/features/sops:1": {
+      "version": "1.0.15",
+      "resolved": "ghcr.io/devcontainers-extra/features/sops@sha256:4cf07db9322cbe261fd103de5ba390907df63cd48d9e0d68517656fc35a27e6e",
+      "integrity": "sha256:4cf07db9322cbe261fd103de5ba390907df63cd48d9e0d68517656fc35a27e6e"
+    }
+  }
+}

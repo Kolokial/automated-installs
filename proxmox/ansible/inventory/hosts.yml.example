@@ -1,0 +1,11 @@
+# Copy to hosts.yml (gitignored) and fill in real addresses.
+all:
+  children:
+    proxmox_host:
+      hosts:
+        pve:
+          ansible_host: 192.0.2.10
+    lxc:
+      hosts: {}
+    vms:
+      hosts: {}

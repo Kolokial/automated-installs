@@ -1,0 +1,27 @@
+# OpenTofu state and cache (state contains secrets)
+*.tfstate
+*.tfstate.*
+.terraform/
+crash.log
+
+# Variable files
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Raw discovery dumps (scrub secrets before committing anything from here)
+discovery/*
+!discovery/.gitkeep
+
+# Environment and keys
+.env
+.env.*
+!.env.example
+*.age
+key.txt
+keys.txt
+age-key*
+
+# Ansible
+*.retry
+ansible/inventory/hosts.yml
