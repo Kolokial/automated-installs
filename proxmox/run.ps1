@@ -3,6 +3,20 @@ $ErrorActionPreference = 'Stop'
 $Image = 'homelab-iac'
 Set-Location $PSScriptRoot
 
+# Load known variables from .env; anything already set in the environment wins
+if (Test-Path .env) {
+    $known = 'PROXMOX_VE_ENDPOINT', 'PROXMOX_VE_API_TOKEN', 'GH_TOKEN', 'REPO_URL', 'AGE_KEY_FILE'
+    foreach ($line in Get-Content .env) {
+        if ($line -match '^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=(.*)$' -and $known -contains $Matches[1]) {
+            $name = $Matches[1]
+            $value = $Matches[2].Trim().Trim('"', "'")
+            if ($value -and -not [Environment]::GetEnvironmentVariable($name)) {
+                [Environment]::SetEnvironmentVariable($name, $value, 'Process')
+            }
+        }
+    }
+}
+
 docker build -t $Image control-machine
 if ($LASTEXITCODE -ne 0) { throw 'docker build failed' }
 

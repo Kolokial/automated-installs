@@ -15,7 +15,7 @@ This builds `control-machine/Dockerfile` and opens a shell in `/work/proxmox`. O
 
 ## Environment variables
 
-The scripts read these from your host shell and pass them into the container. They do not load `.env` (`.env.example` just lists the names).
+`run.sh` and `run.ps1` run on the host. They first load these from `proxmox/.env` (copy `.env.example`; the file is gitignored), then pass them into the container. A variable already set in your shell takes precedence over `.env`. Empty `PROXMOX_VE_ENDPOINT` and `PROXMOX_VE_API_TOKEN` are prompted for; prompted values are never written back to `.env`.
 
 | Variable | Required | Description |
 |----------|----------|-------------|
@@ -24,7 +24,7 @@ The scripts read these from your host shell and pass them into the container. Th
 | `GH_TOKEN` | no | GitHub token for git over HTTPS. Not prompted for; after one `gh auth login` the `homelab-gh` volume keeps the credentials. |
 | `AGE_KEY_FILE` | no | Host path to your age private key. Mounted read-only for SOPS. |
 
-Prompts only appear when the script runs in an interactive terminal. Values are never written to disk; to avoid retyping the token, set it in your shell before running.
+Prompts only appear when the script runs in an interactive terminal. To avoid retyping, put the values in `.env` (plaintext on your disk, gitignored) or set them in your shell:
 
 ```
 export PROXMOX_VE_API_TOKEN='...'     # bash
@@ -35,7 +35,7 @@ $env:PROXMOX_VE_API_TOKEN = '...'     # PowerShell
 
 Run `make help`. All targets are read-only: there is deliberately no `apply` or `destroy`.
 
-`make discover` dumps the cluster state (nodes, guests and their configs, storage, backup jobs, access) to `discovery/api/` and writes `discovery/guests.tsv`, the list of VMs and containers to import. It makes GET requests only, using `PROXMOX_VE_ENDPOINT` and `PROXMOX_VE_API_TOKEN`. If the token has privilege separation on, give the token itself a read-only role such as `PVEAuditor` on `/` (propagate), or some endpoints will return 403. Those are logged to `discovery/api/_errors.log` and skipped.
+`make discover` dumps the cluster state (nodes, guests and their configs, storage, backup jobs, access) to `discovery/api/` and writes `discovery/guests.tsv`, the list of VMs and containers to import. It makes GET requests only, using `PROXMOX_VE_ENDPOINT` and `PROXMOX_VE_API_TOKEN`. Without the right permissions on the token you get 403s or an empty guest list; see `docs/proxmox-token.md` for how to create the user and token and grant a read-only role. 403s are logged to `discovery/api/_errors.log` and skipped.
 
 ## Layout
 

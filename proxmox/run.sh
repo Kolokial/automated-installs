@@ -4,6 +4,22 @@ set -euo pipefail
 IMAGE=homelab-iac
 cd "$(dirname "$0")"
 
+# Load known variables from .env; anything already set in the shell wins
+if [[ -f .env ]]; then
+  while IFS='=' read -r key value || [[ -n $key ]]; do
+    case $key in
+      PROXMOX_VE_ENDPOINT|PROXMOX_VE_API_TOKEN|GH_TOKEN|REPO_URL|AGE_KEY_FILE) ;;
+      *) continue ;;
+    esac
+    value="${value%$'\r'}"
+    value="${value#[\"\']}"
+    value="${value%[\"\']}"
+    if [[ -n $value && -z "${!key:-}" ]]; then
+      export "$key=$value"
+    fi
+  done < .env
+fi
+
 docker build -t "$IMAGE" control-machine
 
 # Optional: AGE_KEY_FILE=/path/to/key.txt ./run.sh

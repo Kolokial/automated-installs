@@ -6,7 +6,7 @@ The repo started empty: scaffold everything.
 
 ## Environment
 - Runs in a Docker container (Dockerfile + run.sh/run.ps1 in repo root) on a Windows desktop. WSL2 is not available.
-- Proxmox provider: bpg/proxmox. Credentials come from env vars `PROXMOX_VE_ENDPOINT` and `PROXMOX_VE_API_TOKEN`. Never write them to files.
+- Proxmox provider: bpg/proxmox. Credentials come from env vars `PROXMOX_VE_ENDPOINT` and `PROXMOX_VE_API_TOKEN`. The user may keep them in the gitignored host-side `proxmox/.env`, which `run.sh`/`run.ps1` load. Never write them to any other file, and never commit them.
 - Proxmox uses a self-signed cert: `insecure = true` in the provider block for now.
 - Git remote is HTTPS; auth via `GH_TOKEN` / `gh auth setup-git`.
 - OpenTofu state is local and gitignored (it contains secrets). Back it up manually for now.
